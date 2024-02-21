@@ -5,10 +5,10 @@ on:
     #pull_request:
       #branches: ["main"]
 
-  jobs:
+jobs:
     test:
       runs-on: ubuntu-latest
-    steps:
+      steps:
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -21,20 +21,20 @@ on:
           cache: 'gradle'
 
           -name: Add permission for gradlew
-            run: chmod +x gradlew
+          run: chmod +x gradlew
 
-        -name: Build with Gradle
-         uses: gradle/gradle-build-action@v2
-         with: 
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with: 
              arguments: build -x test
 
-          -name: Setup MySQL
-           uses: samin/mysql-action@v1
-           with:
+      - name: Setup MySQL
+        uses: samin/mysql-action@v1
+        with:
                mysql database: 'ohgiraffers_db'
                mysql user: ${{ secrets.MYSQL_USERNAME }}
                mysql password: ${{ SECRETS.mysql_password }}
 
-            -name: Test
-            run: ./gradlew test
+      - name: Test
+        run: ./gradlew test
       
