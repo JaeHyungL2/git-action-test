@@ -1,0 +1,3 @@
+[submodule "git-action-config"]
+	path = git-action-config
+	url = https://github.com/JaeHyungL2/git-action-config.git
