@@ -60,8 +60,8 @@ jobs:
       - name: Docker build & push to docker repo
         run: |
           docker build -f DockerFile -t ${{ secrets.DOCKER_REPO }} .
-          docker tag  ${{ secrets.DOCKER_REPO }}:latest ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
+          docker tag  ${{ secrets.DOCKER_REPOSITORY }}:latest ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}
 
       # ssh 접속 및 명령어로 기존 컨테이너를 내리고, 이미지를 업데이트해 배포한다.
       - name: Deploy to server
