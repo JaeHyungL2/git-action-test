@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Docker build 및 docker hub로 push
-      - name: Docker build & push to docker repo
+      - name: Docker build & push to Docker repo
         run: |
           docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }} .
           docker tag  ${{ secrets.DOCKER_REPO }}:latest ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
